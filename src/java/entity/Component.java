@@ -27,16 +27,17 @@ public class Component {
     @Column()
     private String type;
     private String nameComponents;
-    private String descripton;
+    private String description;
     private String company;
     private int price;
+    private int quantity;
     public Component(){}
 
     public Component(Long id, String type, String namecomponents, String descripton, String company, int price) {
         this.id = id;
         this.type = type;
         this.nameComponents = namecomponents;
-        this.descripton = descripton;
+        this.description = descripton;
         this.company = company;
         this.price = price;
     }
@@ -66,11 +67,11 @@ public class Component {
     }
 
     public String getDescripton() {
-        return descripton;
+        return description;
     }
 
     public void setDescripton(String descripton) {
-        this.descripton = descripton;
+        this.description = descripton;
     }
 
     public String getCompany() {
@@ -95,7 +96,7 @@ public class Component {
         hash = 97 * hash + Objects.hashCode(this.id);
         hash = 97 * hash + Objects.hashCode(this.type);
         hash = 97 * hash + Objects.hashCode(this.nameComponents);
-        hash = 97 * hash + Objects.hashCode(this.descripton);
+        hash = 97 * hash + Objects.hashCode(this.description);
         hash = 97 * hash + Objects.hashCode(this.company);
         hash = 97 * hash + this.price;
         return hash;
@@ -122,7 +123,7 @@ public class Component {
         if (!Objects.equals(this.nameComponents, other.nameComponents)) {
             return false;
         }
-        if (!Objects.equals(this.descripton, other.descripton)) {
+        if (!Objects.equals(this.description, other.description)) {
             return false;
         }
         if (!Objects.equals(this.company, other.company)) {
@@ -136,7 +137,14 @@ public class Component {
 
     @Override
     public String toString() {
-        return "Components{" + "id=" + id + ", type=" + type + ", namecomponents=" + nameComponents + ", descripton=" + descripton + ", company=" + company + ", price=" + price + '}';
+        return "Components{" + "id=" + id 
+                + ", type=" + type 
+                + ", namecomponents=" + nameComponents 
+                + ", descripton=" + description 
+                + ", company=" + company 
+                + ", price=" + price 
+                + '}';
     }
     
 }
+специально вызваная ошибка!!!/*отредактировать quantity*/

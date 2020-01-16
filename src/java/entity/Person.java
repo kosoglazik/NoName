@@ -8,10 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- *
- * @author pupil
- */
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +18,10 @@ public class Person {
     private int year;
     private int month;
     private int day;
+    private String role;
 public Person(){}
 
-    public Person(Long id, String firstname, String lastname, int money, int year, int month, int day) {
+    public Person(Long id, String firstname, String lastname, int money, int year, int month, int day, String role) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -32,6 +29,7 @@ public Person(){}
         this.year = year;
         this.month = month;
         this.day = day;
+        this.role = role;
     }
 
     public Long getId() {
@@ -90,9 +88,17 @@ public Person(){}
         this.day = day;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 5;
         hash = 97 * hash + Objects.hashCode(this.id);
         hash = 97 * hash + Objects.hashCode(this.firstname);
         hash = 97 * hash + Objects.hashCode(this.lastname);
@@ -100,6 +106,7 @@ public Person(){}
         hash = 97 * hash + this.year;
         hash = 97 * hash + this.month;
         hash = 97 * hash + this.day;
+        hash = 97 * hash + Objects.hashCode(this.role);
         return hash;
     }
 
@@ -133,6 +140,9 @@ public Person(){}
         if (!Objects.equals(this.lastname, other.lastname)) {
             return false;
         }
+        if (!Objects.equals(this.role, other.role)) {
+            return false;
+        }
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
@@ -141,8 +151,15 @@ public Person(){}
 
     @Override
     public String toString() {
-        return "Person{" + "id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", money=" + money + ", year=" + year + ", month=" + month + ", day=" + day + '}';
+        return "Person{" + "id=" + id 
+                + ", firstname=" + firstname 
+                + ", lastname=" + lastname 
+                + ", money=" + money 
+                + ", year=" + year 
+                + ", month=" + month 
+                + ", day=" + day 
+                + ", role=" + role 
+                + '}';
     }
-
 
 }
