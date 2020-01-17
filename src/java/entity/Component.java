@@ -33,13 +33,14 @@ public class Component {
     private int quantity;
     public Component(){}
 
-    public Component(Long id, String type, String namecomponents, String descripton, String company, int price) {
+    public Component(Long id, String type, String nameComponents, String description, String company, int price, int quantity) {
         this.id = id;
         this.type = type;
-        this.nameComponents = namecomponents;
-        this.description = descripton;
+        this.nameComponents = nameComponents;
+        this.description = description;
         this.company = company;
         this.price = price;
+        this.quantity = quantity;
     }
 
     public Long getId() {
@@ -58,20 +59,20 @@ public class Component {
         this.type = type;
     }
 
-    public String getNamecomponents() {
+    public String getNameComponents() {
         return nameComponents;
     }
 
-    public void setNamecomponents(String namecomponents) {
-        this.nameComponents = namecomponents;
+    public void setNameComponents(String nameComponents) {
+        this.nameComponents = nameComponents;
     }
 
-    public String getDescripton() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescripton(String descripton) {
-        this.description = descripton;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCompany() {
@@ -90,15 +91,24 @@ public class Component {
         this.price = price;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.type);
-        hash = 97 * hash + Objects.hashCode(this.nameComponents);
-        hash = 97 * hash + Objects.hashCode(this.description);
-        hash = 97 * hash + Objects.hashCode(this.company);
-        hash = 97 * hash + this.price;
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.id);
+        hash = 67 * hash + Objects.hashCode(this.type);
+        hash = 67 * hash + Objects.hashCode(this.nameComponents);
+        hash = 67 * hash + Objects.hashCode(this.description);
+        hash = 67 * hash + Objects.hashCode(this.company);
+        hash = 67 * hash + this.price;
+        hash = 67 * hash + this.quantity;
         return hash;
     }
 
@@ -115,6 +125,9 @@ public class Component {
         }
         final Component other = (Component) obj;
         if (this.price != other.price) {
+            return false;
+        }
+        if (this.quantity != other.quantity) {
             return false;
         }
         if (!Objects.equals(this.type, other.type)) {
@@ -137,14 +150,15 @@ public class Component {
 
     @Override
     public String toString() {
-        return "Components{" + "id=" + id 
+        return "Component{" + "id=" + id 
                 + ", type=" + type 
-                + ", namecomponents=" + nameComponents 
-                + ", descripton=" + description 
+                + ", nameComponents=" + nameComponents 
+                + ", description=" + description 
                 + ", company=" + company 
                 + ", price=" + price 
+                + ", quantity=" + quantity 
                 + '}';
     }
-    
+
+ 
 }
-специально вызваная ошибка!!!/*отредактировать quantity*/

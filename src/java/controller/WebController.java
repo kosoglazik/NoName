@@ -1,5 +1,6 @@
 package controller;
 
+import entity.Component;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -24,7 +25,8 @@ public class WebController extends HttpServlet {
         String path = request.getServletPath();
         switch(path) {
             case "/showAddComponent":
-                request.getRequestDispatcher("/showAddComponent");
+                request.getRequestDispatcher("/showAddComponent")
+                        .forward(request, response);
                 break;
             case "/createComponent":
                 String type = request.getParameter("type");
@@ -32,7 +34,8 @@ public class WebController extends HttpServlet {
                 String company = request.getParameter("company");
                 String description = request.getParameter("description");
                 String  price = request.getParameter("price");
-                Component component = new Component(type, nameComponent, company, description, new Integer(price));
+                String quantity = request.getParameter("quantity");
+                Component component = new Component(type, nameComponent, company, description, new Integer(price), new Integer(quantity));
                 componentFacade.create(component);
                 break;
             default:
