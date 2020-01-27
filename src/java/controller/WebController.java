@@ -29,6 +29,9 @@ public class WebController extends HttpServlet {
         switch(path) {
             case "/showAddComponent":
                 request.getRequestDispatcher("/showAddComponent.jsp").forward(request, response);
+                
+                request.getRequestDispatcher("/showAddComponent")
+                        .forward(request, response);
                 break;
             case "/createComponent":
                 String type = request.getParameter("type");

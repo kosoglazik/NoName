@@ -36,7 +36,7 @@ public class Component implements Serializable{
     private int quantity;
     public Component(){}
 
-    public Component(String type, String nameComponents, String description, String company, int price, int quantity) {
+    public Component(String type, String nameComponents, String description, String company, int price, int quantity) { 
         this.type = type;
         this.nameComponents = nameComponents;
         this.description = description;
@@ -103,14 +103,14 @@ public class Component implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + Objects.hashCode(this.id);
-        hash = 23 * hash + Objects.hashCode(this.type);
-        hash = 23 * hash + Objects.hashCode(this.nameComponents);
-        hash = 23 * hash + Objects.hashCode(this.description);
-        hash = 23 * hash + Objects.hashCode(this.company);
-        hash = 23 * hash + this.price;
-        hash = 23 * hash + this.quantity;
+        int hash = 3;
+        hash = 59 * hash + Objects.hashCode(this.id);
+        hash = 59 * hash + Objects.hashCode(this.type);
+        hash = 59 * hash + Objects.hashCode(this.nameComponents);
+        hash = 59 * hash + Objects.hashCode(this.description);
+        hash = 59 * hash + Objects.hashCode(this.company);
+        hash = 59 * hash + this.price;
+        hash = 59 * hash + this.quantity;
         return hash;
     }
 
@@ -152,14 +152,7 @@ public class Component implements Serializable{
 
     @Override
     public String toString() {
-        return "Component{" + "id=" + id + 
-                ", type=" + type + 
-                ", nameComponents=" + nameComponents + 
-                ", description=" + description + 
-                ", company=" + company + 
-                ", price=" + price + 
-                ", quantity=" + quantity + 
-                '}';
+        return "Component{" + "id=" + id + ", type=" + type + ", nameComponents=" + nameComponents + ", description=" + description + ", company=" + company + ", price=" + price + ", quantity=" + quantity + '}';
     }
-    
+
 }
