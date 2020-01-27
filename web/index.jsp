@@ -32,15 +32,16 @@ Person
     Created on : Jan 14, 2020, 3:01:07 PM
     Author     : pupil
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>computeruniverse</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Computeruniverse</h1>
+        <a href="showAddComponent">Добавить компонент</a>
+        <a href="listComponent">Список компонентов</a>
     </body>
 </html>

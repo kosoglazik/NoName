@@ -8,9 +8,11 @@ price - цена
  */
 package entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +21,8 @@ import javax.persistence.Id;
  *
  * @author pupil
  */
-public class Component {
+@Entity
+public class Component implements Serializable{
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,13 +36,13 @@ public class Component {
     private int quantity;
     public Component(){}
 
-    public Component(Long id, String type, String namecomponents, String descripton, String company, int price) {
-        this.id = id;
+    public Component(String type, String nameComponents, String description, String company, int price, int quantity) {
         this.type = type;
-        this.nameComponents = namecomponents;
-        this.description = descripton;
+        this.nameComponents = nameComponents;
+        this.description = description;
         this.company = company;
         this.price = price;
+        this.quantity = quantity;
     }
 
     public Long getId() {
@@ -58,20 +61,20 @@ public class Component {
         this.type = type;
     }
 
-    public String getNamecomponents() {
+    public String getNameComponents() {
         return nameComponents;
     }
 
-    public void setNamecomponents(String namecomponents) {
-        this.nameComponents = namecomponents;
+    public void setNameComponents(String nameComponents) {
+        this.nameComponents = nameComponents;
     }
 
-    public String getDescripton() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescripton(String descripton) {
-        this.description = descripton;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCompany() {
@@ -90,15 +93,24 @@ public class Component {
         this.price = price;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.type);
-        hash = 97 * hash + Objects.hashCode(this.nameComponents);
-        hash = 97 * hash + Objects.hashCode(this.description);
-        hash = 97 * hash + Objects.hashCode(this.company);
-        hash = 97 * hash + this.price;
+        hash = 23 * hash + Objects.hashCode(this.id);
+        hash = 23 * hash + Objects.hashCode(this.type);
+        hash = 23 * hash + Objects.hashCode(this.nameComponents);
+        hash = 23 * hash + Objects.hashCode(this.description);
+        hash = 23 * hash + Objects.hashCode(this.company);
+        hash = 23 * hash + this.price;
+        hash = 23 * hash + this.quantity;
         return hash;
     }
 
@@ -115,6 +127,9 @@ public class Component {
         }
         final Component other = (Component) obj;
         if (this.price != other.price) {
+            return false;
+        }
+        if (this.quantity != other.quantity) {
             return false;
         }
         if (!Objects.equals(this.type, other.type)) {
@@ -137,14 +152,14 @@ public class Component {
 
     @Override
     public String toString() {
-        return "Components{" + "id=" + id 
-                + ", type=" + type 
-                + ", namecomponents=" + nameComponents 
-                + ", descripton=" + description 
-                + ", company=" + company 
-                + ", price=" + price 
-                + '}';
+        return "Component{" + "id=" + id + 
+                ", type=" + type + 
+                ", nameComponents=" + nameComponents + 
+                ", description=" + description + 
+                ", company=" + company + 
+                ", price=" + price + 
+                ", quantity=" + quantity + 
+                '}';
     }
     
 }
-специально вызваная ошибка!!!/*отредактировать quantity*/

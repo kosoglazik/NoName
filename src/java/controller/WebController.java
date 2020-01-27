@@ -1,22 +1,26 @@
 package controller;
 
+import entity.Component;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import session.ComponentFacade;
 
 
 
 @WebServlet(name = "WebController", urlPatterns = {
-    "/showComponent",
-    "/showPerson"})
+    "/showAddComponent",
+    "/showPerson",
+    "/listComponent"})
 
 
 public class WebController extends HttpServlet {
-
+@EJB private ComponentFacade componentFacade;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -24,17 +28,24 @@ public class WebController extends HttpServlet {
         String path = request.getServletPath();
         switch(path) {
             case "/showAddComponent":
-                request.getRequestDispatcher("/showAddComponent");
+                request.getRequestDispatcher("/showAddComponent.jsp").forward(request, response);
                 break;
             case "/createComponent":
                 String type = request.getParameter("type");
                 String nameComponent = request.getParameter("nameComponents");
                 String company = request.getParameter("company");
                 String description = request.getParameter("description");
-                String  price = request.getParameter("price");
-                Component component = new Component(type, nameComponent, company, description, new Integer(price));
+                String price = request.getParameter("price");
+                String quantity = request.getParameter("quantity");
+                Component component = new Component(type, nameComponent, company, description, new Integer(price), new Integer(quantity));
                 componentFacade.create(component);
+                request.getRequestDispatcher("/index.jsp")
+                        .forward(request, response);
                 break;
+            case "/listComponent":
+                List<Component> listComponent = componentFacade.findAll();
+                request.setAttribute("listComponent", listComponent);
+                request.getRequestDispatcher("/listComponent.jsp");
             default:
                 throw new AssertionError();
         }
